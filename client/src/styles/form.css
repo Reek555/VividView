@@ -1,0 +1,72 @@
+
+
+* {
+    box-sizing: border-box;
+  }
+
+  #form-container {
+    min-width: 600px;
+  }
+  
+  /* Add padding to containers */
+  #sign-form {
+    width: 40%; 
+    margin: auto; 
+    margin-top: 147px;
+}
+  
+  /* Full-width input fields */
+  #sign-form> input[type=text], #sign-form> input[type=password] {
+    width: 100%;
+    padding: 20px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  #sign-form> input[type=text]:focus, #sign-form> input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Overwrite default styles of hr */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 14px;
+  }
+  
+  /* Set a style for the submit button */
+  .registerbtn {
+    background-color: black; /* #04AA6D;*/
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 16px
+  }
+  
+  .registerbtn:hover {
+    opacity: 1;
+  }
+  
+  /* Add a blue text color to links */
+  a {
+    color: dodgerblue;
+  }
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+.below-form {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+
+  @media only screen and (max-width: 800px){
+    #sign-form {
+      width: 60%;
+    }
+  }

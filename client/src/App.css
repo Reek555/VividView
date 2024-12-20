@@ -1,0 +1,15 @@
+body {
+    font-family: 'Poppins'; 
+    overflow: visible;
+    margin: 0; 
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.disable-scroll {
+    height: 100%;
+    overflow: hidden;
+}

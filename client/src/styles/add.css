@@ -1,0 +1,30 @@
+#add-btn {
+    border-width: 0;
+    border-radius: 100%;
+    font-size: 34px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: #6699CC;
+    font-style: italic;
+    font-family: inherit;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding-right: 11px;
+}
+
+#add-btn:hover {
+    cursor: pointer;
+}
+
+
+#btn-container {
+
+    position: fixed;
+    top: 517px;
+    width: 100%;
+    min-width: 600px;
+}
+
+
+

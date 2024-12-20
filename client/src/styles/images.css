@@ -1,0 +1,166 @@
+
+
+#container {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    min-width: 600px;
+    padding: 66px 10%;
+    background-color: white; 
+}
+
+.column {
+    width: 50%;
+    padding: 5px
+}
+
+
+.img-container {
+    margin-bottom: 5px;
+    vertical-align: baseline;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.ellipsis {
+    position: absolute;
+    top: 13px;
+    right: -3px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 100%;
+    padding-top: 12px;;
+
+}
+
+
+.ellipsis:hover {
+    background-color: rgba(0,0,0,0.1);
+
+} 
+
+
+.ellipsis-buttons {
+    position: absolute;
+    width: 100px;
+    top: 52px;
+    right: 21px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+.ellipsis-buttons > button {
+    display: block;
+    border: none;
+    background-color: white;
+    width: 100%;
+    padding: 11px 0;
+
+}
+
+.ellipsis-buttons > button:hover {
+
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+
+
+.img-container > img:hover {
+    opacity: 0.7;
+}
+
+#image-modal {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow: auto;
+    min-width: 600px;
+    padding: 61px 0;
+    z-index: 2;
+}
+
+#modal-img-container {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+#modal-img-container > img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 700px){
+    #modal-img-container {
+      width: 100%;
+    }
+  }
+
+
+#like-container {
+    width: max-content;
+    margin: auto;
+    margin-top: 10px;
+
+}
+
+
+
+#modal-img-container, #like-container {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/* Add Animation (can be removed because it is added in other stylesheet)*/
+  
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+
+
+#like-icon {
+    font-size: 37px;
+    float: left;
+}
+
+#like-icon:hover {
+    cursor: pointer;
+}
+
+#like-counter {
+    line-height: 37px;
+    float: left;
+    color: white;
+    padding: 0 5px;
+    font-size: 20px;
+}
+
+#caption {
+    color: white
+}
+
+
+.x-close {
+    position: absolute;
+    top: 15px;
+    right: 35px; 
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+.x-close:hover,
+.x-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }

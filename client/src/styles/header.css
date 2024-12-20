@@ -1,0 +1,114 @@
+header {
+    position: fixed; 
+    width: 100%; 
+    min-width: 600px; 
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+}
+
+
+
+#header {
+    background-color: #f1f1f1;
+    opacity: 97%;
+    display: flex;
+    height: 88px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#logo {
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Aldrich';
+    padding-left: 33px;
+
+}
+
+#logo:hover {
+    color: black
+}
+
+
+
+.header-links {
+    text-decoration: none;
+    color: black
+}
+#nav-items> a:hover {
+    color: lightblue
+}
+
+
+
+#profile {
+    font-size: 22px;
+    padding-right: 33px;
+    direction: rtl;
+}
+
+#profile > i:hover {
+    cursor: pointer;
+}
+
+
+#logo, #profile {
+    width: 156px
+} 
+
+
+
+
+
+#drop-down {
+    position: absolute;
+    background-color: white;
+    text-align: center;
+    right: 6px;
+    top: 62px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width: 206px;
+
+    animation-name: zoom;
+    animation-duration: 0.4s;
+
+}
+
+
+/* Add Animation */
+  
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+
+#drop-down > img {
+    width: 81px; 
+    margin-top: 44px;
+}
+
+
+
+#drop-down > a {
+
+    display: block;
+    padding: 10px 9px;
+    border-top: solid lightgray 1px;
+}
+
+#drop-down > a:hover {
+
+    background-color: #f1f1f1;
+}
+
+
+
+
+
+
+
+
