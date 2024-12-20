@@ -1,5 +1,5 @@
 const mongoose = require("mongoose"); 
-//require("dotenv").config()
+require("dotenv").config()
 
 
 //mongoose.connect("mongodb+srv://rickswass:9bpClcBDMyAqHbVp@cluster0.1zeidif.mongodb.net/test")
@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 //'mongodb://127.0.0.1:27017/appG2'
 
 async function main () {
-    await mongoose.connect("mongodb+srv://rickswass:9bpClcBDMyAqHbVp@cluster0.1zeidif.mongodb.net/vividViewDB");
+    await mongoose.connect(process.env.DB_STRING);
 }
 
 main(); 
