@@ -35,10 +35,7 @@ function Home ({user, yoffset, setYoffset}) {
       .then((result) => {
       
       let results = result.data.reverse()
-/* 
-      if (filtered) {
-          results = results.filter(i => i.op == user.id) 
-      } */
+
       setPhotos(results); 
       })
   }, [user]) //why user? app > UploadPage > images ... app returns before user/user.id is set, even if we the user is set later useEffect[] only renders at the beginning; 
@@ -54,7 +51,8 @@ function Home ({user, yoffset, setYoffset}) {
               setFormModalDisplay = {setFormModalDisplay} 
               activeImg = {activeImg} 
               setActiveImg = {setActiveImg}
-              photos = {photos} />
+              photos = {photos}
+              setPhotos = {setPhotos} />
             
             <Add 
               user = {user} 

@@ -173,10 +173,11 @@ async function deleteController (req, res) {
 
         await Photos.deleteOne(photo)
 
-        res.send('deleted successfully!')
+        const photos = await Photos.find({}, {'_id': false})
+
+        res.send({msg: 'Edited successfully!', photos: photos})
     }
     catch(e) {
-        console.log(66)
         res.status(500).send('Internal server error!')
     }
 

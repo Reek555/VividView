@@ -19,12 +19,17 @@ export default function UploadsPage ({user, yoffset, setYoffset}) {
       
       let results = result.data.reverse()
       results = results.filter(i => i.op == user.id) 
+      if (Object.keys(results).length == 0 ){
+        return setPhotos()
+      }
       setPhotos(results); 
       })
   }, [user]) //why user? app > UploadPage > images ... app returns before user/user.id is set, even if we the user is set later useEffect[] only renders at the beginning; 
 
 
     return (
+
+        photos? 
         <div  style = {{marginTop: 50, minWidth: 600} }>
             <Images 
               user = {user}
@@ -43,6 +48,10 @@ export default function UploadsPage ({user, yoffset, setYoffset}) {
               yoffset = {yoffset}
               setPhotos = {setPhotos}/>
 
+        </div>
+        :
+        <div style = {{textAlign: 'center', marginTop: 299}} >
+          Nothing to show!
         </div>
     )
 

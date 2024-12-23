@@ -8,7 +8,7 @@ const url = import.meta.env.VITE_BASE_URL // special way to access envirenment v
 
 
 
-export default function Images ({user, filtered = false, yoffset, setYoffset,  setFormModalDisplay,  activeImg, setActiveImg, photos}) {
+export default function Images ({user, filtered = false, yoffset, setYoffset,  setFormModalDisplay,  activeImg, setActiveImg, photos, setPhotos}) {
     const [imgModalDisplay, setImgModalDisplay] = useState('none')
 
 
@@ -39,9 +39,9 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
                 url: url + '/delete',
                 data: photo
               })
-              .then (
-    
-                location.reload()
+              .then ( (res) => {
+                setPhotos(res.data.photos )
+              }
               )
         }
     

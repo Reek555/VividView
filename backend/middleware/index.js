@@ -6,7 +6,6 @@ const jsonwebtoken = require ('jsonwebtoken')
 const isloggedIn = (req, res, next) => {
     try {
         const token = req.headers.authorization;
-        console.log(req.headers.authorization)
         const decoded = jsonwebtoken.verify(token, process.env.JWT_SECRET)  //resolving the token to original data 
 
         req.currentUser = decoded

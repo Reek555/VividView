@@ -26,18 +26,24 @@ export default function UploadModal ({yoffset, formModalDisplay, setFormModalDis
 
         try {
 
-        const response = await axios({
-            method: activeImg.fileName? 'put': 'post',
-            url: url + (activeImg.fileName? '/edit': '/upload'),
-            data: activeImg.fileName? activeImg: formData, 
-            })
+            const response = await axios({
+                method: activeImg.fileName? 'put': 'post',
+                url: url + (activeImg.fileName? '/edit': '/upload'),
+                data: activeImg.fileName? activeImg: formData, 
+                })
 
-        let photos = response.data.photos.reverse()
-        setPhotos(photos)
-        setFormModalDisplay('none')
-        } 
+            let photos = response.data.photos.reverse()
+            setPhotos(photos)
+
+            setFormModalDisplay('none')
+
+            setActiveImg({likes: [], caption: ''}) 
+
+            document.body.classList.remove('disable-scroll'); 
+            window.scrollTo(0, yoffset)
+            } 
         catch (e) {
-          console.error(e);
+            console.error(e);
         } 
 
     }
@@ -57,8 +63,10 @@ export default function UploadModal ({yoffset, formModalDisplay, setFormModalDis
                 <span onClick = {closeHandler}  className = 'x-close x-close-second'>&times;</span>
 
                 <form id = 'upload-form' onSubmit={submitHandler}>
+
                     <label style = {{fontSize:18}} htmlFor = 'avatar'>select a file: </label>
                     <input style = {{fontSize: 15}} type="file" name = 'avatar' accept = ".png, .jpg, .jpeg" required disabled = {Boolean(activeImg.fileName)}/>
+
                     <input value = {activeImg.caption} type="text" name='caption' placeholder="Enter a caption" autoComplete="off" maxLength={80} required  onChange={(e) => changeHandler(e)}/>
 
                     <button id = 'upload-btn' type = 'submit' >{activeImg.fileName? 'Edit': 'Upload'}</button>

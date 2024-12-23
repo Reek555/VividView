@@ -40,9 +40,8 @@ export default function Form () {
       })
       .then (
         res => {
-          console.log(res.data)
           localStorage.setItem('token', res.data.token);
-          location.replace('http://localhost:5173/')
+          location.replace('/');
         }
       )
       .catch((err) => {

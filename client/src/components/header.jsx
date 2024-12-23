@@ -35,7 +35,7 @@ function Header ({user, yoffset}) {
           <a href = "/" id = 'logo' className='header-links'>VividView</a>
           <nav id = 'nav-items'>
             <a href="/" className='header-links'>Home</a>
-            <a href='#' style = {{padding: '0px 28px'}} className='header-links'>GitHub</a>
+            <a href='https://github.com/Reek555/VividView' style = {{padding: '0px 28px'}} className='header-links'>GitHub</a>
             <a href='/contact' className='header-links'>Contact</a>
           </nav>
           <div id= 'profile'>          
