@@ -5,7 +5,7 @@ import '../styles/homePage.css'
 import photography from '../assets/photography.webp'
 import UploadModal from '../components/uploadModal'
 import { useState, useEffect } from 'react';
-
+import Loader from '../components/loader';
 
 const url = import.meta.env.VITE_BASE_URL // special way to access envirenment variales in vite
 
@@ -16,7 +16,7 @@ function ParaScroll() {
       <img src={photography} alt="" ></img>
       <div>
         <p style = {{fontSize: 25, letterSpacing: 10, margin: 0}} >CAPTURE THE MOMENT</p>
-        <p style = {{fontSize: 13, margin: 0}} >Discover other creators photographic art, and share yours.</p>
+        <p style = {{fontSize: 13, margin: 0}} >Discover other creators photographic art and share yours.</p>
       </div>
     </div> 
   )
@@ -43,6 +43,7 @@ function Home ({user, yoffset, setYoffset}) {
 
     return (
         <>
+            <Loader visible = {photos}/>
             <ParaScroll/>
             <Images 
               user = {user}
