@@ -85,6 +85,12 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
         }
     
         function likeHandler () {
+
+            //if the user is not logged in
+            if (!user.id) {
+                location.href = '/login'
+            }
+
             let activeImage = {...activeImg}
     
             if (!activeImage.likes.includes(user.id)) {
