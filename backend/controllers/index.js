@@ -4,6 +4,7 @@ const jsonwebtoken = require ('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const path = require('path');
 require('dotenv').config()
+const fs = require('fs');
 
 
 
@@ -59,7 +60,7 @@ async function loginController (req, res) {
         return res.status(404).send('wrong email or password!')
     }
     
-    const token = jsonwebtoken.sign({id: user.id, email: user.email, name: user.name}, 'super-secret') // creating a token of the provided data
+    const token = jsonwebtoken.sign({id: user.id, email: user.email, name: user.name, role: user.role}, 'super-secret') // creating a token of the provided data
     res.send({msg: 'logged in successfully', token: token})
     
 
@@ -198,6 +199,21 @@ async function likeController (req, res) {
     }
 }
 
+async function insightsController (req, res) {
+
+    fs.readFile('./insights.json', 'utf8', function(err, data) {
+        if (err) {
+            return res.status(500).send('internal server error!')
+        }
+
+        let doc = JSON.parse(data)
+        
+        return res.json({
+            visits: [...new Set(doc["ips"])].length
+        })
+
+      }) 
+}
 
 
 
@@ -210,4 +226,6 @@ module.exports = {
     editController, 
     deleteController, 
     likeController, 
-    profileController}
+    profileController, 
+    insightsController
+}

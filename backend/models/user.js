@@ -44,6 +44,11 @@ const PhotoSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: [6, 'password is too short']
+    }, 
+
+    role: {
+        type: String, 
+        default: 'user' 
     }
 
 })

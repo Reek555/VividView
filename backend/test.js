@@ -1,19 +1,9 @@
-function one () {
-    return 1
-}
+var fs = require('fs');
 
 
-function two () {
-    return two
-}
 
-let three = 3; 
-let four = 4; 
+let a = fs.readFile('insights.json', 'utf8', function (err, data) {})
 
-
-module.exports = {one, three, four}
-
-
-//console.log (module)
+console.log(typeof(a))
 
 
