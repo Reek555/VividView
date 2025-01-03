@@ -9,6 +9,7 @@ import RegisterPage from './pages/registerPage'
 import NoPage from './pages/noPage';
 import UploadsPage from './pages/uploadsPage';
 import ContactPage from './pages/contactPage';
+import InsightsPage from './pages/insightsPage';
 import axios from 'axios';
 
 
@@ -25,9 +26,9 @@ function App() {
 
 
   useEffect(() => {
-    if (!localStorage.getItem('token')) {
-     return;  
-    }
+
+    axios.get(`${url}/`) //for login a visit
+
     
     axios.get(`${url}/profile`)
     .then(
@@ -37,7 +38,9 @@ function App() {
       )
     .catch(
       () => {null}
-    )
+    ) 
+
+
 
   }, [])
 
@@ -59,6 +62,8 @@ function App() {
           <Route path='/login' element={<RegisterPage />} />
           <Route path='/uploads' element={user.id? <UploadsPage user = {user} yoffset = {yoffset} setYoffset = {setYoffset}/>: <NoPage/>} />
           <Route path = '/contact' element = {<ContactPage />}/>
+          <Route path = '/insights' element = {<InsightsPage />}/>
+
 
           <Route path='*' element={<NoPage />} />
 

@@ -17,15 +17,17 @@ router.get('/', (req, res) => {
     if (err) {
       res.status(500).send("internal server error!")
     }
-
     let doc = JSON.parse(data)
     doc["ips"].push(req.ip)
     doc = JSON.stringify(doc)
-    fs.writeFile('insights.json', doc, function (err) {})
+    fs.writeFile('insights.json', doc, function (err) {
+      
+      res.send('you made connection to the server')
+
+    })
 
   }) 
 
-  res.send('you made connection to the server')
   //res.sendFile('/home/reek/Desktop/app-g2/backend/views/index.html');
 
 })

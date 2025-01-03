@@ -109,7 +109,7 @@ async function uploadController (req, res) {
         res.status(500).send('Internal server error!')
     }
 
-}
+} 
 
 async function photosController(req, res) {
     try {
@@ -183,7 +183,7 @@ async function deleteController (req, res) {
     }
 
 }
-
+ 
 async function likeController (req, res) {
 
     try {
