@@ -201,18 +201,38 @@ async function likeController (req, res) {
 
 async function insightsController (req, res) {
 
-    fs.readFile('./insights.json', 'utf8', function(err, data) {
-        if (err) {
-            return res.status(500).send('internal server error!')
-        }
+    console.log(req.method)
+    console.log(typeof(req.method))
+
+
+    try {
+        fs.readFile('./insights.json', 'utf8', function(err, data) {
+    
 
         let doc = JSON.parse(data)
         
-        return res.json({
-            visits: [...new Set(doc["ips"])].length
-        })
+        if (req.method == 'PUT') {
+                doc["total-visits"] += 1
+                doc = JSON.stringify(doc)
+                fs.writeFile('insights.json', doc, function (err) {
+                
+                res.end(); 
+            
+                })
+        }
+        if (req.method == "GET") {
+            res.send(doc)
+        }
 
-      }) 
+      })
+
+    }
+    catch (e) {
+        //console.log(e)
+        res.status(500).send('Internal server error!')
+    }
+
+
 }
 
 

@@ -11,22 +11,8 @@ var fs = require('fs');
 
 router.get('/', (req, res) => {
 
+  res.send('you made connection to the server')
 
-  fs.readFile('./insights.json', 'utf8', function(err, data) {
-    
-    if (err) {
-      res.status(500).send("internal server error!")
-    }
-    let doc = JSON.parse(data)
-    doc["ips"].push(req.ip)
-    doc = JSON.stringify(doc)
-    fs.writeFile('insights.json', doc, function (err) {
-      
-      res.send('you made connection to the server')
-
-    })
-
-  }) 
 
   //res.sendFile('/home/reek/Desktop/app-g2/backend/views/index.html');
 
@@ -34,6 +20,7 @@ router.get('/', (req, res) => {
 
 
 //you need to use multer middleware to recieve form data through js formData object
+
 
 router.post ('/register', controllers.registerController)
 
@@ -64,6 +51,8 @@ const upload = multer({ storage: storage})
 router.post('/upload', isloggedIn, upload.single('avatar') , controllers.uploadController)
 
 router.put('/like', isloggedIn, controllers.likeController)
+
+router.put ('/insights', controllers.insightsController)
 
 router.get ('/insights', isloggedIn, isAdmin, controllers.insightsController)
 

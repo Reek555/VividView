@@ -27,8 +27,6 @@ function App() {
 
   useEffect(() => {
 
-    axios.get(`${url}/`) //for login a visit
-
     
     axios.get(`${url}/profile`)
     .then(

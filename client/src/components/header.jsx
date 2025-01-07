@@ -13,7 +13,7 @@ function Header ({user, yoffset}) {
     let loggedIn = user.id; 
 
     function logoutHandler() {
-      localStorage.clear()
+      localStorage.removeItem("token")
       window.reload()
     }
 

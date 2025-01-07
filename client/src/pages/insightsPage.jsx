@@ -5,15 +5,23 @@ const url = import.meta.env.VITE_BASE_URL // special way to access envirenment v
 
 
 export default function InsightsPage () {
-    const [val, setVal] = useState({})
+    const [doc, setDoc] = useState({})
 
     useEffect(() => {
         axios.get(`${url}/insights`)
         .then (
-            (res) => setVal(res.data)
+            (res) => setDoc(res.data)
+        )
+        .catch (
+            (e) => {
+                location.replace('/nopage')
+            } 
         )
     }, [])
 
-    return <p style = {{marginTop: 148, textAlign: "center"}}>visits: {val.visits}</p>
+
+    return <p style = {{marginTop: 148, textAlign: "center"}}>Total visits = {doc["total-visits"]} </p>
+
+    
 
 }
