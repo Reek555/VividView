@@ -24,8 +24,6 @@ async function registerController (req, res) {
 
     */
 
-
-
     try {
 
         let {name, email, password} = req.body
@@ -201,8 +199,6 @@ async function likeController (req, res) {
 
 async function insightsController (req, res) {
 
-    console.log(req.method)
-    console.log(typeof(req.method))
 
 
     try {
@@ -216,7 +212,7 @@ async function insightsController (req, res) {
                 doc = JSON.stringify(doc)
                 fs.writeFile('insights.json', doc, function (err) {
                 
-                res.end(); 
+                    res.end(); 
             
                 })
         }
@@ -234,8 +230,6 @@ async function insightsController (req, res) {
 
 
 }
-
-
 
 
 module.exports = {

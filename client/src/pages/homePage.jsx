@@ -34,9 +34,9 @@ function Home ({user, yoffset, setYoffset}) {
       axios.get(url + '/photos/all')
       .then((result) => {
       
-      let results = result.data.reverse()
+          let results = result.data.reverse()
 
-      setPhotos(results); 
+          setPhotos(results); 
       })
   }, [user]) //why user? app > UploadPage > images ... app returns before user/user.id is set, even if we the user is set later useEffect[] only renders at the beginning; 
 

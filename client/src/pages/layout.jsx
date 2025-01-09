@@ -22,14 +22,15 @@ function Layout ({user, yoffset}) {
         return; 
       }
 
+      localStorage.setItem('visited', true)
+
       axios({
         method: 'put',
         url: url + '/insights'})
-      .then (
-        () => {
-          localStorage.setItem('visited', true)
-        }
-      )
+      .catch ( (e) => {
+        localStorage.removeItem('visited')
+      })
+      
 
     }, []) 
 
