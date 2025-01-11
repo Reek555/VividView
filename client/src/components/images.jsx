@@ -20,6 +20,7 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
         const [visible, setVisible] = useState(false)
 
         function imgClickHandler (photo) {
+            console.log(photo)
             setYoffset(window.pageYOffset)
             document.body.classList.add('disable-scroll'); 
             setActiveImg(photo)
@@ -90,17 +91,18 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
             if (!user.id) {
                 location.href = '/login'
             }
-
+            
             let activeImage = {...activeImg}
     
-            if (!activeImage.likes.includes(user.id)) {
-    
-                activeImage.likes.push(user.id); 
+            if (activeImage.likes.includes(user.id)) {
+                activeImage.likes = activeImage.likes.filter(i => i != user.id)
+
             }
             else {
-                activeImage.likes = activeImage.likes.filter(i => i != user.id)
-            }
-    
+                activeImage.likes.push(user.id)
+            } 
+
+            setActiveImg(activeImage);
             
     
             axios({
@@ -109,16 +111,15 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
                 data: activeImage, 
                 })
             .then (
-                (res) => {
-                    //console.log(activeImage)
-                    setActiveImg(activeImage)
-    
-                    //we need to updated photos state var to overwrite the previous array
-                    //let updatedPhotos = [...photos]
-                    //let indx = updatedPhotos.findIndex(i => i.fileName == activeImage.fileName);
-                    //updatedPhotos[indx] = activeImage
-                    //setPhotos(updatedPhotos)
-    
+                res => {
+                    let newPhotos = [...photos]; 
+                    newPhotos.splice(photos.findIndex(x => x.fileName == activeImage.fileName), 1, activeImage)
+                    setPhotos(newPhotos)
+                }
+            )
+            .catch (
+                (e) => {
+                    //setActiveImg(activeImg) //in case of an error revert original active image
                 }
             )
     

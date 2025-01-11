@@ -186,6 +186,7 @@ async function likeController (req, res) {
 
     try {
         let photo = await Photos.findOne({fileName: req.body.fileName})
+        console.log(req.body.likes)
         photo.likes = req.body.likes
         await photo.save()
 

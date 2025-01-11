@@ -10,6 +10,7 @@ import NoPage from './pages/noPage';
 import UploadsPage from './pages/uploadsPage';
 import ContactPage from './pages/contactPage';
 import InsightsPage from './pages/insightsPage';
+import AboutPage from './pages/aboutPage';
 import axios from 'axios';
 
 
@@ -61,6 +62,8 @@ function App() {
           <Route path='/uploads' element={user.id? <UploadsPage user = {user} yoffset = {yoffset} setYoffset = {setYoffset}/>: <NoPage/>} />
           <Route path = '/contact' element = {<ContactPage />}/>
           <Route path = '/insights' element = {<InsightsPage />}/>
+          <Route path = '/about' element = {<AboutPage />}/>
+
 
 
           <Route path='*' element={<NoPage />} />
