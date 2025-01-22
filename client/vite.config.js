@@ -13,7 +13,8 @@ export default ({ mode }) => {
     // To access env vars here use process.env.TEST_VAR
     plugins: [react()],
     server: {
-      port: process.env.VITE_PORT
+      port: process.env.VITE_PORT, 
+      host: '0.0.0.0'
     }
   });
 }

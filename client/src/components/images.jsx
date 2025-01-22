@@ -75,7 +75,7 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
         )
     }
 
-    function modal () {
+    function Modal () {
 
         function closeHandler () {
             setActiveImg({likes: [], caption: ''})
@@ -146,7 +146,9 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
     
     }
 
-
+    //the problem with <Modal /> component is that it is inside Images we need to put it
+    //outside (check the link)
+    // also the scroll event is fired when you resize the window vertically
 
     return (
         photos? 
@@ -166,7 +168,7 @@ export default function Images ({user, filtered = false, yoffset, setYoffset,  s
         
         </div>
 
-        {modal()}
+        <Modal />   
 
         </>
         : null
