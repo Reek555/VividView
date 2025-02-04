@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../styles/homePage.css'
 import photography from '../assets/photography.webp'
 import UploadModal from '../components/uploadModal'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import Loader from '../components/loader';
 
 const url = import.meta.env.VITE_BASE_URL // special way to access envirenment variales in vite
@@ -30,6 +30,8 @@ function Home ({user, yoffset, setYoffset}) {
     const [activeImg, setActiveImg] = useState({likes: [], caption: ''});
     const [photos, setPhotos] = useState();
 
+
+
     useEffect(() => {
       axios.get(url + '/photos/all')
       .then((result) => {
@@ -45,16 +47,9 @@ function Home ({user, yoffset, setYoffset}) {
         <>
             <Loader visible = {photos}/>
             <ParaScroll/>
-            <Images 
-              user = {user}
-              yoffset = {yoffset}
-              setYoffset = {setYoffset}
-              setFormModalDisplay = {setFormModalDisplay} 
-              activeImg = {activeImg} 
-              setActiveImg = {setActiveImg}
-              photos = {photos}
-              setPhotos = {setPhotos} />
-            
+
+            <Images imageProps = {{user, yoffset, setYoffset, setFormModalDisplay, activeImg, setActiveImg, photos: photos, setPhotos}} />
+
             <Add 
               user = {user} 
               setFormModalDisplay = {setFormModalDisplay} 

@@ -1,5 +1,6 @@
 import Images from "../components/images"
 import UploadModal from "../components/uploadModal";
+import Add from "../components/add"
 import { useState, useEffect, useRef} from 'react'
 import axios from 'axios';
 
@@ -18,10 +19,10 @@ export default function UploadsPage ({user, yoffset, setYoffset}) {
       .then((result) => {
       
       let results = result.data.reverse()
-      results = results.filter(i => i.op == user.id) 
-      if (Object.keys(results).length == 0 ){
-        return setPhotos()
-      }
+      //results = results.filter(i => i.op == user.id) 
+      //if (Object.keys(results).length == 0 ){
+      //  return setPhotos()
+      //}
       setPhotos(results); 
       })
   }, [user]) //why user? app > UploadPage > images ... app returns before user/user.id is set, even if we the user is set later useEffect[] only renders at the beginning; 
@@ -31,15 +32,9 @@ export default function UploadsPage ({user, yoffset, setYoffset}) {
 
         photos? 
         <div  style = {{marginTop: 50, minWidth: 600} }>
-            <Images 
-              user = {user}
-              yoffset = {yoffset}
-              setYoffset = {setYoffset}
-              setFormModalDisplay = {setFormModalDisplay} 
-              activeImg = {activeImg} 
-              setActiveImg = {setActiveImg}
-              photos = {photos} />
-            
+
+            <Images imageProps = {{user, yoffset, setYoffset, setFormModalDisplay, activeImg, setActiveImg, photos: photos.filter(i => i.op == user.id), setPhotos}}/>
+
             <UploadModal 
               activeImg = {activeImg} 
               setActiveImg = {setActiveImg} 
