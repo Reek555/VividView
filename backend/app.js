@@ -13,8 +13,24 @@ const port = process.env.PORT
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-app.use(cors())
+//app.use(cors())
 app.use(morgan('tiny'));
+
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins (Change "*" to a specific domain if needed)
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
+
+  // Handle Preflight Requests
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204); // No Content
+  }
+
+  next();
+});
+
+
 
 
 app.use('/', routes)
