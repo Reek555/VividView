@@ -18,18 +18,13 @@ app.use(morgan('tiny'));
 
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
-  if (req.method === 'OPTIONS') {
-    res.status(200).end()
-    return
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins (Change "*" to a specific domain if needed)
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
+
+  // Handle Preflight Requests
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204); // No Content
   }
 
   next();
