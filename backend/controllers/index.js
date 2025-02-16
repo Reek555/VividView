@@ -110,6 +110,19 @@ async function uploadController (req, res) {
 } 
 
 async function photosController(req, res) {
+
+    /* 
+        it takes photo fileName and sends the photo file
+
+        preconditions: 
+        id parameter == fileName on the db;
+        id parameter == fileName on the server
+        
+        postconditions: 
+        file is sent;
+
+
+    */
     try {
         const photos = await Photos.find({}, {'_id': false})
 
@@ -117,13 +130,16 @@ async function photosController(req, res) {
                 return res.send(photos)
         }
 
-/*         for (let i of photos) {
+         for (let i of photos) {
             if (i.fileName == req.params.id) {
-                return res.sendFile(path.resolve(`uploads/${req.params.id}`))  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
+                //return res.sendFile(path.resolve(`uploads/${req.params.id}`))  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
+                return res.sendFile(path.resolve("uploads/flower.jpg"))  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
+
             }
-        } */
+        } 
 
         res.end()
+
         
     }
     catch (e) {
