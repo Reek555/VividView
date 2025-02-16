@@ -38,7 +38,7 @@ function App() {
       }
       )
     .catch(
-      () => {null}
+      (err) => {console.log("error handled")}
     ) 
 
 
