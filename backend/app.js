@@ -7,7 +7,7 @@ require('dotenv').config()
 var cors = require('cors')
 const morgan = require('morgan')
 
-
+console.log(process.cwd())
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))

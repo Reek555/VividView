@@ -133,7 +133,8 @@ async function photosController(req, res) {
          for (let i of photos) {
             if (i.fileName == req.params.id) {
                 //return res.sendFile(path.resolve(`uploads/${req.params.id}`))  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
-                return res.sendFile(path.resolve("uploads/flower.jpg"))  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
+                //return res.sendFile(path.resolve("uploads/flower.jpg"))  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
+                return res.sendFile(`${process.cwd()}/uploads/flower.jpg`)  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
 
             }
         } 
