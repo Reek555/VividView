@@ -13,7 +13,6 @@ const port = process.env.PORT
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-//app.use(cors())
 app.use(morgan('tiny'));
 
 
@@ -32,18 +31,17 @@ app.use(morgan('tiny'));
   */
 
 
-app.options('/', (req, res) => {
+app.use(cors({
+    origin: ["https://vivid-view-backend.vercel.app/"], 
+    methods: ['GET', "POST"], 
+    credentials: true
 
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
-
-  return res.sendStatus(204);
+}))
 
 
+app.get("/", (req, res) => {
+  res.send('the server is running no problem')
 })
-
-app.get('/', allowCors) 
 
 //app.use('/', routes)
 
