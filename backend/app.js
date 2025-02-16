@@ -10,7 +10,7 @@ const allowCors = require( "./serverlessfunc.js")
 
 const port = process.env.PORT
 
-
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(morgan('tiny'));
@@ -33,9 +33,7 @@ app.use(morgan('tiny'));
 
 app.use(cors(
   {
-    origin: "http://localhost:5173", 
-    methods: ["GET", "POST", "OPTIONS"], 
-    credentials: true
+    origin: "https://vivid-view.vercel.app", 
 
 }))
 
