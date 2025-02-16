@@ -119,12 +119,11 @@ async function photosController(req, res) {
 
 /*         for (let i of photos) {
             if (i.fileName == req.params.id) {
-                return res.sendFile(path.resolve(`uploads/${req.params.id}`))
+                return res.sendFile(path.resolve(`uploads/${req.params.id}`))  //for returninng the string: /home/reek/Desktop/VividView/backend/uploads/eyes.jpg
             }
         } */
 
-        return res.sendFile(path.resolve(`uploads/eyes.jpg`))
-
+        res.end()
         
     }
     catch (e) {
