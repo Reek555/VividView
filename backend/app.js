@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 require('dotenv').config()
 var cors = require('cors')
 const morgan = require('morgan')
-
+const allowCors = require( "./serverlessfunc.js")
 
 const port = process.env.PORT
 
@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 app.use(morgan('tiny'));
 
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://vivid-view.vercel.app"); // Allow all origins (Change "*" to a specific domain if needed)
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
@@ -29,11 +29,23 @@ app.use((req, res, next) => {
 
   next();
 });
- 
+  */
 
 
+app.options('/', (req, res) => {
 
-app.use('/', routes)
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
+
+  return res.sendStatus(204);
+
+
+})
+
+app.get('/', allowCors) 
+
+//app.use('/', routes)
 
 
 //if the end point does't exist

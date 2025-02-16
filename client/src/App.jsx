@@ -21,7 +21,21 @@ const url = import.meta.env.VITE_BASE_URL // special way to access envirenment v
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 
-function App() {
+function App () {
+  const [text, setText] = useState()
+
+  axios.get(`${url}/`)
+  .then(
+    (res) => {
+      setText(res.data)
+      console.log(res.test)
+    }
+    )
+
+  return <p>{text}</p>
+}
+
+/* function App() {
   const [user, setUser] = useState({})
   const [yoffset, setYoffset] = useState(0)
 
@@ -72,7 +86,7 @@ function App() {
     </BrowserRouter>
     </>
   )
-}
+} */
 
 
 
