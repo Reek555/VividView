@@ -31,9 +31,10 @@ app.use(morgan('tiny'));
   */
 
 
-app.use(cors({
-    origin: ["https://vivid-view.vercel.app"], 
-    methods: ['GET', "POST"], 
+app.use(cors(
+  {
+    origin: "https://vivid-view.vercel.app", 
+    methods: ["GET", "POST", "OPTIONS"], 
     credentials: true
 
 }))
