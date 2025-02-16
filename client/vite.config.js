@@ -14,7 +14,7 @@ export default ({ mode }) => {
     plugins: [react()],
     server: {
       port: process.env.VITE_PORT, 
-      host: '0.0.0.0'
+      //host: '0.0.0.0'
     }
   });
 }
