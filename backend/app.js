@@ -6,43 +6,21 @@ const bodyParser = require('body-parser')
 require('dotenv').config()
 var cors = require('cors')
 const morgan = require('morgan')
-const allowCors = require( "./serverlessfunc.js")
 
-const port = process.env.PORT
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(morgan('tiny'));
 
-
-/* app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://vivid-view.vercel.app"); // Allow all origins (Change "*" to a specific domain if needed)
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
-
-  // Handle Preflight Requests
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(204); // No Content
-  }
-
-  next();
-});
-  */
-
-
 app.use(cors(
   {
-    origin: "https://vivid-view.vercel.app", 
+    origin: process.env.ORIGIN, 
 
 }))
 
 
-app.get("/", (req, res) => {
-  res.send('the server is running no problem')
-})
-
-//app.use('/', routes)
+app.use('/', routes)
 
 
 //if the end point does't exist
@@ -58,7 +36,7 @@ app.use((err, req, res, next) => {
   })
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT , () => {
     console.log("express is running on port 3000")
     })
 
