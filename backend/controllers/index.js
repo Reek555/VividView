@@ -110,7 +110,6 @@ async function uploadController (req, res) {
 } 
 
 async function photosController(req, res) {
-    console.log(111)
     try {
         const photos = await Photos.find({}, {'_id': false})
 
@@ -118,11 +117,14 @@ async function photosController(req, res) {
                 return res.send(photos)
         }
 
-        for (let i of photos) {
+/*         for (let i of photos) {
             if (i.fileName == req.params.id) {
                 return res.sendFile(path.resolve(`uploads/${req.params.id}`))
             }
-        }
+        } */
+
+        return res.sendFile(path.resolve(`uploads/eyes.jpg`))
+
         
     }
     catch (e) {
