@@ -35,7 +35,7 @@ function Home ({user, yoffset, setYoffset}) {
     useEffect(() => {
       axios.get(url + '/photos/all')
       .then((result) => {
-          console.log(result)
+          return console.log(result.data)
           let results = result.data.reverse()
 
           setPhotos(results); 
