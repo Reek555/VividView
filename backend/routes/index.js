@@ -26,7 +26,7 @@ router.post ('/register', controllers.registerController)
 
 router.post ('/login', controllers.loginController)
 
-router.get ('/photos/:id', controllers.photosController)
+router.get ('/photos', controllers.photosController)
 
 //
 

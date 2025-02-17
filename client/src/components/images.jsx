@@ -95,7 +95,7 @@ function ColumnImg ({photo, subProps}) {
     return (
         <div className = 'img-container'  >
             <img 
-                src = {url + '/photos/' + photo.fileName} 
+                src = {url + '/' + photo.fileName} 
                 onClick={() => imgClickHandler(photo)}
                 style = {{width: '100%'}}
             ></img>
@@ -173,7 +173,7 @@ function Modal ({subProps}) {
 
             <div id = 'modal-img-container'>            
                 <p id = 'caption'>{activeImg.caption}</p>
-                <img src = {url + '/photos/' + activeImg.fileName}></img>
+                <img src = {url + '/' + activeImg.fileName}></img>
             </div>
             <div id = 'like-container' >
                 <i onClick={likeHandler} className='fa fa-heart' id = 'like-icon' style = {{color: activeImg.likes.includes(user.id)? 'red': '#8b8b8b'}}></i>

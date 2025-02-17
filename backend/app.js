@@ -20,6 +20,9 @@ app.use(cors(
 }))
 
 
+app.use(express.static("public"))
+
+
 app.use('/', routes)
 
 
