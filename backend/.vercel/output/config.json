@@ -1,11 +1,3 @@
 {
-    "version": 3,
-    "overrides": {
-      "data": {
-        "contentType": "application/json"
-      },
-      "another.html": {
-        "path": "something-else"
-      }
-    }
+
   }
