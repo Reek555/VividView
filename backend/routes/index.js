@@ -4,15 +4,15 @@ const { isloggedIn } = require('../middleware')
 const {isAdmin} = require ('../middleware/isAdmin.js')
 const controllers = require('../controllers')   // this whole odd shit can be fixed
 const multer  = require('multer')
+const path = require('path')
 var fs = require('fs');
 
 
 
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
 
-  res.send('you made connection to the server')
-
+  res.sendFile(path.join(process.cwd(), 'public', req.params.id))
 
   //res.sendFile('/home/reek/Desktop/app-g2/backend/views/index.html');
 
