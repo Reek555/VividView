@@ -15,7 +15,7 @@ export default function UploadsPage ({user, yoffset, setYoffset}) {
     const [photos, setPhotos] = useState();
 
     useEffect(() => {
-      axios.get(url + '/photos/all')
+      axios.get(url + '/photos')
       .then((result) => {
       
       let results = result.data.reverse()

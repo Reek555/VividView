@@ -10,14 +10,6 @@ var fs = require('fs');
 
 
 
-router.get('/:id', (req, res) => {
-
-  res.sendFile(path.join(process.cwd(), 'public', req.params.id))
-
-  //res.sendFile('/home/reek/Desktop/app-g2/backend/views/index.html');
-
-})
-
 
 //you need to use multer middleware to recieve form data through js formData object
 
@@ -39,7 +31,7 @@ router.get('/profile', isloggedIn, controllers.profileController)
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/')
+    cb(null, 'public/')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
