@@ -1,12 +1,11 @@
-This project is a full-stack web application featuring:
+This project is a full-stack web application built with MERN:
 
 * **Frontend:**
-    * Built with React using the Vite boilerplate.
-    * Leveraging modern JavaScript features and a fast development server.
+    * using Vite boilerplate.
 
 * **Backend:**
-    * Powered by Express.js for robust API endpoints.
     * Utilizing the Multer library for efficient handling of file uploads and form data.
 
-* **Database:**
-    * Utilizing MongoDB for flexible data storage and retrieval.
+
+
+taariq.connect@gmail.com
