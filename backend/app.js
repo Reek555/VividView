@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 require('dotenv').config()
 var cors = require('cors')
 const morgan = require('morgan')
+const path = require('path');
 
 
 app.use(bodyParser.urlencoded({extended: false}))
@@ -18,7 +19,8 @@ app.use(cors(
 
 }))
 
-app.use(express.static("public"))
+//app.use(express.static("public"))
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get("/home", (req, res) => {
