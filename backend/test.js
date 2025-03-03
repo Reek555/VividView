@@ -1,9 +1,7 @@
-var fs = require('fs');
+const path = require('path');
 
 
 
-let a = fs.readFile('insights.json', 'utf8', function (err, data) {})
+//console.log(path.join(__dirname, 'flower.jpg'))
 
-console.log(typeof(a))
-
-
+console.log(__dirname)
