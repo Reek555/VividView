@@ -25,11 +25,6 @@ app.use(cors(
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get("/home", (req, res) => {
-  console.log (typeof(process.cwd()))
-  res.send('home page')
-})
-
 
 
 app.use('/', routes)

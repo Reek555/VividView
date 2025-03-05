@@ -13,6 +13,12 @@ var fs = require('fs');
 
 //you need to use multer middleware to recieve form data through js formData object
 
+router.get('/home', (req, res) => {
+    console.log(__dirname) //routes
+    console.log(process.cwd()) //backend
+    res.send('home page')
+})
+
 
 router.post ('/register', controllers.registerController)
 
@@ -31,7 +37,7 @@ router.get('/profile', isloggedIn, controllers.profileController)
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(process.cwd(), 'public'))
+    cb(null, path.join(__dirname.replace('routes', ''), 'public'))
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
