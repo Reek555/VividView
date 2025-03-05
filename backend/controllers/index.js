@@ -8,6 +8,10 @@ const fs = require('fs');
 
 
 
+function test(req, res) {
+    res.send('test handler')
+}
+
 async function registerController (req, res) {
     /* 
         it takes name, email, password and registers a document
@@ -103,7 +107,7 @@ async function uploadController (req, res) {
         res.send({msg: 'uplaoded successfully', photos: photos})
     }
     catch (e) {
-        //console.log (e)
+        console.log (e)
         res.status(500).send('Internal server error!')
     }
 
@@ -261,5 +265,6 @@ module.exports = {
     deleteController, 
     likeController, 
     profileController, 
-    insightsController
+    insightsController,
+    test
 }

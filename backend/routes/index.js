@@ -31,7 +31,7 @@ router.get('/profile', isloggedIn, controllers.profileController)
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public')
+    cb(null, path.join(process.cwd(), 'public'))
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
