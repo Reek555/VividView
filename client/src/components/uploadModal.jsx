@@ -3,7 +3,7 @@ import '../styles/uploadModal.css'
 import axios from 'axios'
 import Loader from '../components/loader';
 
-const url = import.meta.env.VITE_BASE_URL // special way to access envirenment variales in vite.
+const url = import.meta.env.VITE_BASE_URL // special way to access envirenment variales in vite..
 
 
 export default function UploadModal ({yoffset, formModalDisplay, setFormModalDisplay, activeImg, setActiveImg, setPhotos}) {
