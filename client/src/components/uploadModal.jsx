@@ -8,6 +8,7 @@ const url = import.meta.env.VITE_BASE_URL // special way to access envirenment v
 
 export default function UploadModal ({yoffset, formModalDisplay, setFormModalDisplay, activeImg, setActiveImg, setPhotos}) {
 
+    const [loaderDisplay, setLoaderDis] = useState('none')
 
     function closeHandler() {
         setActiveImg({likes: [], caption: ''}) 
@@ -19,6 +20,7 @@ export default function UploadModal ({yoffset, formModalDisplay, setFormModalDis
 
     async function submitHandler() {
         event.preventDefault()
+        setLoaderDis('block')
 
 
         let form = document.getElementById('upload-form')
@@ -35,7 +37,7 @@ export default function UploadModal ({yoffset, formModalDisplay, setFormModalDis
 
             let photos = response.data.photos.reverse()
             setPhotos(photos)
-
+            setLoaderDis('none')
             setFormModalDisplay('none')
 
             setActiveImg({likes: [], caption: ''}) 
@@ -60,6 +62,7 @@ export default function UploadModal ({yoffset, formModalDisplay, setFormModalDis
 
     return (
         <>
+        <Loader top = {'317px'} visibility = {loaderDisplay}/>
         <div id = 'modal' style = {{display: formModalDisplay}}>
             <div id = 'white-space'>
                 <span onClick = {closeHandler}  className = 'x-close x-close-second'>&times;</span>
@@ -69,7 +72,7 @@ export default function UploadModal ({yoffset, formModalDisplay, setFormModalDis
                     <label style = {{fontSize:18}} htmlFor = 'avatar'>select a file: </label>
                     <input style = {{fontSize: 15}} type="file" name = 'avatar' accept = ".png, .jpg, .jpeg" required disabled = {Boolean(activeImg.url)}/>
 
-                    <input value = {activeImg.caption} type="text" name='caption' placeholder="Enter a caption" autoComplete="off" maxLength={80} required  onChange={(e) => changeHandler(e)}/>
+                    <input value = {activeImg.caption} type="text" name='caption' placeholder="Enter a caption" autoComplete="off" maxLength={80} minLength={4} required  onChange={(e) => changeHandler(e)}/>
 
                     <button id = 'upload-btn' type = 'submit' >{activeImg.url? 'Edit': 'Upload'}</button>
                 </form>

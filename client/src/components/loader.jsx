@@ -1,9 +1,9 @@
 import '../styles/loader.css'
 
 
-export default function Loader ({visible}) {
+export default function Loader ({visibility, top}) {
     return (
-        <div id = 'loader' style = {{textAlign: 'center', top: 532, position: 'relative', display: visible? 'none': 'block'}}>         
+        <div id = 'loader' style = {{ display: visibility, top: top}}>         
             <span className = "loader"></span>
         </div>
     )

@@ -44,7 +44,7 @@ function Home ({user, yoffset, setYoffset}) {
 
     return (
         <>
-            <Loader visible = {photos}/>
+            <Loader visibility = {photos? "none": "block"} top = {'529px'}/>
             <ParaScroll/>
 
             <Images imageProps = {{user, yoffset, setYoffset, setFormModalDisplay, activeImg, setActiveImg, photos: photos, setPhotos}} />
