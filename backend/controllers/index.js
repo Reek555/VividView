@@ -117,7 +117,7 @@ async function photosController(req, res) {
 
     /* 
         it takes photo fileName and sends the photo file
-
+        ///
         preconditions: 
         id parameter == fileName on the db;
         id parameter == fileName on the server
