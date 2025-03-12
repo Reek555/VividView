@@ -25,6 +25,7 @@ app.use(cors(
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+//you need to use multer middleware to recieve form data through js formData object
 
 
 app.use('/', routes)

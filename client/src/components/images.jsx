@@ -28,13 +28,13 @@ export default function Images ({imageProps}) {
             <div className='column'>
                 {photos
                  .slice(0, photos.length / 2)
-                 .map((photo ) => <ColumnImg key = {photo.fileName} photo = {photo} subProps = {subProps} />)}
+                 .map((photo ) => <ColumnImg key = {photo.url} photo = {photo} subProps = {subProps} />)}
             </div>
             
             <div className='column'>
                 { photos
                   .slice(photos.length / 2, photos.length)
-                  .map ((photo) => <ColumnImg key = {photo.fileName} photo = {photo} subProps = {subProps}/>)}
+                  .map ((photo) => <ColumnImg key = {photo.url} photo = {photo} subProps = {subProps}/>)}
             </div>
         
         </div>
@@ -95,7 +95,7 @@ function ColumnImg ({photo, subProps}) {
     return (
         <div className = 'img-container'  >
             <img 
-                src = {url + '/' + photo.fileName} 
+                src = {photo.url} 
                 onClick={() => imgClickHandler(photo)}
                 style = {{width: '100%'}}
             ></img>
@@ -153,7 +153,7 @@ function Modal ({subProps}) {
         .then (
             res => {
                 let newPhotos = [...photos]; 
-                newPhotos.splice(photos.findIndex(x => x.fileName == activeImage.fileName), 1, activeImage)
+                newPhotos.splice(photos.findIndex(x => x.url == activeImage.url), 1, activeImage)
                 setPhotos(newPhotos)
             }
         )
@@ -173,7 +173,7 @@ function Modal ({subProps}) {
 
             <div id = 'modal-img-container'>            
                 <p id = 'caption'>{activeImg.caption}</p>
-                <img src = {url + '/' + activeImg.fileName}></img>
+                <img src = {activeImg.url}></img>
             </div>
             <div id = 'like-container' >
                 <i onClick={likeHandler} className='fa fa-heart' id = 'like-icon' style = {{color: activeImg.likes.includes(user.id)? 'red': '#8b8b8b'}}></i>

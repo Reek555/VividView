@@ -95,7 +95,7 @@ async function uploadController (req, res) {
         const {caption} = req.body
 
         let photo = new Photos({
-            fileName: req.file.filename, 
+            url: req.file.path, 
             caption, 
             op: req.currentUser.id})
 
@@ -159,7 +159,7 @@ async function editController (req, res) {
 
 
     try {
-        let photo = await Photos.findOne({fileName: req.body.fileName})
+        let photo = await Photos.findOne({url: req.body.url})
 
         if (!(photo.op == req.currentUser.id)) {
             return res.end()
@@ -187,7 +187,7 @@ async function deleteController (req, res) {
 
     try{
 
-        let photo = await Photos.findOne({fileName: req.body.fileName})
+        let photo = await Photos.findOne({url: req.body.url})
 
         if (!(photo.op == req.currentUser.id)) {
             return res.end()
@@ -208,7 +208,7 @@ async function deleteController (req, res) {
 async function likeController (req, res) {
 
     try {
-        let photo = await Photos.findOne({fileName: req.body.fileName})
+        let photo = await Photos.findOne({url: req.body.url})
         console.log(req.body.likes)
         photo.likes = req.body.likes
         await photo.save()

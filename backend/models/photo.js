@@ -1,10 +1,10 @@
 const mongoose = require("mongoose"); 
 
 const PhotoSchema = new mongoose.Schema({
-    fileName: {
+    url: {
         type: String, 
-        required: true,
-        match: /(.png|.jpeg|jpg)/
+        required: true
+        //match: /(.png|.jpeg|jpg)/
     }, 
     op: {
         type: String
