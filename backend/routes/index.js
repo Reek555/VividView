@@ -15,7 +15,7 @@ const cloudinary = require('cloudinary')
 
 
 
-router.post('/home', async (req, res) => {
+router.get('/home', async (req, res) => {
     //console.log(__dirname) //routes
     //console.log(process.cwd()) //backend
 
