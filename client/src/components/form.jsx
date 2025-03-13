@@ -1,6 +1,7 @@
 import '../styles/form.css'
 import axios from 'axios';
 import { useState } from 'react'
+import Loader from '../components/loader';
 
 
 
@@ -12,6 +13,7 @@ const url = import.meta.env.VITE_BASE_URL // special way to access envirenment v
 
 export default function Form () {
     const [password, setPassword] = useState('')
+    const [loaderDisplay, setLoaderDis] = useState('none')
 
 
     const register = window.location.pathname == '/register'; 
@@ -20,6 +22,7 @@ export default function Form () {
     function submitHandler (e) {
 
       e.preventDefault()
+      setLoaderDis('block')
 
       let data = {}
 
@@ -45,6 +48,7 @@ export default function Form () {
         }
       )
       .catch((err) => {
+        setLoaderDis('none')
         if (!register) {   //in case the user enters wrong email or address
           alert(err.response.data)
         }
@@ -55,6 +59,8 @@ export default function Form () {
 
 
     return (
+        <>
+        <Loader top = {'279px'} visibility={loaderDisplay} />
         <div id = 'form-container'>
         <form id = 'sign-form' onSubmit={ (e) => submitHandler(e)}>
             <h1>{register? 'Register': 'Login'}</h1>
@@ -108,6 +114,7 @@ export default function Form () {
 
       </form>
       </div>
+      </>
 
     )
 
