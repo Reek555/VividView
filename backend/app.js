@@ -47,8 +47,10 @@ app.use((err, req, res, next) => {
   })
 
 
-app.listen(process.env.PORT , () => {
-    console.log("express is running on port 3000")
+const port = process.env.PORT
+
+app.listen(port , () => {
+    console.log("express is running on port", port)
     })
 
 

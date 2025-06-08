@@ -15,8 +15,10 @@ const cloudinary = require('cloudinary')
 
 
 
-router.get('/home', async (req, res) => {
-    //console.log(__dirname) //routes
+
+
+router.get('/home',  (req, res) => {
+    //console.log(path.join(__dirname, 'test', 'andTest')) //routes
     //console.log(process.cwd()) //backend
 
     res.send ('welcom to home page.')
@@ -40,7 +42,7 @@ router.delete ('/delete', isloggedIn, controllers.deleteController)
 router.get('/profile', isloggedIn, controllers.profileController)
 
 
-cloudinary.v2.config({ 
+/* cloudinary.v2.config({  
   cloud_name: 'dbffpmya5', 
   api_key: '349899937571167', 
   api_secret: 'EhTx3Kf_bP0cMtGKepUcZVjHdKA' // Click 'View API Keys' above to copy your API secret
@@ -48,19 +50,61 @@ cloudinary.v2.config({
 
 
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary.v2,
+  cloudinary: cloudinary.v2,   
   params: {
     allowed_formats: ["jpg", "png", "jpeg"]  // Allowed file formats
-  }
+  } 
 });
+
 
 
 const upload = multer({ 
                     storage: storage,
-                    limits: { fileSize: 2 * 1024 * 1024 }});
+                    limits: { fileSize: 2 * 1024 * 1024 }
+                    });
 
 
 router.post('/upload', isloggedIn, upload.single('avatar') , controllers.uploadController)
+
+ */
+
+
+
+cloudinary.v2.config({  
+  cloud_name: 'dbffpmya5', 
+  api_key: '349899937571167', 
+  api_secret: 'EhTx3Kf_bP0cMtGKepUcZVjHdKA' // Click 'View API Keys' above to copy your API secret
+});
+
+
+const storage = multer.diskStorage({
+  filename: function(req, file, cb) {
+    cb(null, file.originalname)
+
+  }
+})
+
+
+  const upload = multer({ 
+                    storage: storage,
+                    });
+
+
+function cloudinaryMiddle (req, res, next) {
+  cloudinary.v2.uploader.upload (req.file.path,  function (err, result) {
+    if (err) {
+      console.log("cloudinary code error")
+      console.log(err)
+       return res.status(500).send('cloudinary code error')
+    }
+
+    next();
+  })
+}
+
+
+router.post('/upload', isloggedIn, upload.single('avatar') , cloudinaryMiddle ,controllers.uploadController)
+
 
 router.put('/like', isloggedIn, controllers.likeController)
 
