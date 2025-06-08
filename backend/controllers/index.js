@@ -103,7 +103,7 @@ async function uploadController (req, res) {
         res.send({msg: 'uplaoded successfully', photos: photos})
     }
     catch (e) {
-        //console.log (e)
+        console.log (e)
         res.status(500).send('Internal server error!')
     }
 
