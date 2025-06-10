@@ -42,7 +42,7 @@ router.delete ('/delete', isloggedIn, controllers.deleteController)
 router.get('/profile', isloggedIn, controllers.profileController)
 
 
-/* cloudinary.v2.config({  
+cloudinary.v2.config({  
   cloud_name: 'dbffpmya5', 
   api_key: '349899937571167', 
   api_secret: 'EhTx3Kf_bP0cMtGKepUcZVjHdKA' // Click 'View API Keys' above to copy your API secret
@@ -66,11 +66,11 @@ const upload = multer({
 
 router.post('/upload', isloggedIn, upload.single('avatar') , controllers.uploadController)
 
- */
 
 
 
-cloudinary.v2.config({  
+
+/* cloudinary.v2.config({  
   cloud_name: 'dbffpmya5', 
   api_key: '349899937571167', 
   api_secret: 'EhTx3Kf_bP0cMtGKepUcZVjHdKA' // Click 'View API Keys' above to copy your API secret
@@ -104,7 +104,7 @@ function cloudinaryMiddle (req, res, next) {
 
 
 router.post('/upload', isloggedIn, upload.single('avatar') , cloudinaryMiddle ,controllers.uploadController)
-
+ */
 
 router.put('/like', isloggedIn, controllers.likeController)
 

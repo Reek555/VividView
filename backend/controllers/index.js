@@ -91,7 +91,7 @@ async function uploadController (req, res) {
     */
 
     try {
-        console.log(req.body)
+        //console.log(req.body)
         const {caption} = req.body
 
         let photo = new Photos({
