@@ -148,7 +148,7 @@ async function photosController(req, res) {
         
     }
     catch (e) {
-        console.log(69, e)
+        console.log(e)
         res.status(500).send('internal server error!', e)
     }
 

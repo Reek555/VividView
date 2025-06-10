@@ -32,7 +32,6 @@ router.post ('/login', controllers.loginController)
 
 router.get ('/photos', controllers.photosController)
 
-//
 
 
 router.put ('/edit', isloggedIn, controllers.editController)
@@ -42,7 +41,7 @@ router.delete ('/delete', isloggedIn, controllers.deleteController)
 router.get('/profile', isloggedIn, controllers.profileController)
 
 
-cloudinary.v2.config(process.env.CLOUDINARY);
+cloudinary.v2.config(JSON.parse(process.env.CLOUDINARY))
 
 
 const storage = new CloudinaryStorage({
@@ -61,7 +60,6 @@ const upload = multer({
 
 
 router.post('/upload', isloggedIn, upload.single('avatar') , controllers.uploadController)
-
 
 
 
