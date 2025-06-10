@@ -8,12 +8,6 @@ import axios from 'axios';
 const url = import.meta.env.VITE_BASE_URL // special way to access envirenment variales in vite
 
 
-const l = {
-  'about': 'about page',
-  'log in': 'log in page', 
-  'sign up': 'sing up page'}
-
-
 function Layout ({user, yoffset}) {
 
     //editing insights file in the server:

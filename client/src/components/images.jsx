@@ -1,6 +1,5 @@
 import '../styles/images.css'
 import { useState, useEffect, useContext, createContext} from 'react'
-import pic4 from '../assets/words.jpeg'
 import axios from 'axios'
 
 
@@ -173,7 +172,7 @@ function Modal ({subProps}) {
 
             <div id = 'modal-img-container'>            
                 <p id = 'caption'>{activeImg.caption}</p>
-                <img src = {url + '/' + activeImg.fileName}></img>
+                <img src = {activeImg.fileName? url + '/' + activeImg.fileName: null}></img>
             </div>
             <div id = 'like-container' >
                 <i onClick={likeHandler} className='fa fa-heart' id = 'like-icon' style = {{color: activeImg.likes.includes(user.id)? 'red': '#8b8b8b'}}></i>

@@ -17,10 +17,7 @@ function Header ({user, yoffset}) {
       window.reload()
     }
 
-    let FirstButton = loggedIn? 
-
-                    {text: 'Uploads', link: '/uploads'}:
-                    {text: 'Sign up', link: '/register'}
+    let FirstButton = loggedIn? {text: 'Uploads', link: '/uploads'}: {text: 'Sign up', link: '/register'}
 
     let secondButton = loggedIn? 
                     {text: 'Log out ', link: '', handler: logoutHandler}:
